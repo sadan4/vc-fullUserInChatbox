@@ -1,15 +1,19 @@
+/*
+ * Vencord, a Discord client mod
+ * Copyright (c) 2024 Vendicated and contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+import { Devs } from "@utils/constants";
 import definePlugin from "@utils/types";
 import { findByCodeLazy } from "@webpack";
+
 const normalMessageComponent = findByCodeLazy(".USER_MENTION)");
+
 export default definePlugin({
     name: "FullUserInChatbox",
-    description: "",
-    authors: [
-        {
-            name: "sadan",
-            id: 521819891141967883n
-        }
-    ],
+    description: "Puts the full user mention object in the chatbox",
+    authors: [Devs.sadan],
 
     patches: [
         {
@@ -21,15 +25,15 @@ export default definePlugin({
         }
     ],
 
-    patchChatboxMention(props) {
+    patchChatboxMention(props: any) {
         return normalMessageComponent({
             // this seems to be constant
             className: "mention",
             userId: props.id,
             channelId: props.channelId,
-            //this seems to always be false/undef
+            // this seems to always be false/undef
             inlinePreview: undefined
-        })
+        });
     },
-})
+});
 
