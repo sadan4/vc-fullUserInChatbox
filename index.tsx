@@ -6,9 +6,9 @@
 
 import { Devs } from "@utils/constants";
 import definePlugin from "@utils/types";
-import { findByCodeLazy } from "@webpack";
+import { findComponentByCodeLazy } from "@webpack";
 
-const normalMessageComponent = findByCodeLazy(".USER_MENTION)");
+const NormalMessageComponent = findComponentByCodeLazy(".USER_MENTION)");
 
 export default definePlugin({
     name: "FullUserInChatbox",
@@ -26,14 +26,14 @@ export default definePlugin({
     ],
 
     patchChatboxMention(props: any) {
-        return normalMessageComponent({
+        return <NormalMessageComponent
             // this seems to be constant
-            className: "mention",
-            userId: props.id,
-            channelId: props.channelId,
+            className="mention"
+            userId= {props.id}
+            channelId={props.channelId}
             // this seems to always be false/undef
-            inlinePreview: undefined
-        });
+            inlinePreview={undefined}
+        />;
     },
 });
 
