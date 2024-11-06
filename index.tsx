@@ -17,7 +17,7 @@ export default definePlugin({
 
     patches: [
         {
-            find: "UNKNOWN_ROLE_PLACEHOLDER]",
+            find: ":\"text\":",
             replacement: {
                 match: /(hidePersonalInformation.*?)return/,
                 replace: "$1return $self.patchChatboxMention(arguments[0]);"
