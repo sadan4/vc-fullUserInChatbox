@@ -1,3 +1,5 @@
+# THIS GOT MERGED UPSTREAM, ENABLE THAT INSTEAD
+
 # TextProfileView
 
 TextProfileView userplugin for Vencord 🚀
